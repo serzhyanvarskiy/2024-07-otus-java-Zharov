@@ -2,7 +2,7 @@ package homework;
 
 import java.util.Objects;
 
-//@SuppressWarnings({"java:S1135"}) // при выполнении ДЗ эту аннотацию надо удалить
+// @SuppressWarnings({"java:S1135"}) // при выполнении ДЗ эту аннотацию надо удалить
 public class Customer {
     private final long id;
     private String name;
@@ -19,8 +19,8 @@ public class Customer {
     public Customer(Customer key) {
         Objects.requireNonNull(key);
         this.id = key.getId();
-        this.name= key.getName();
-        this.scores= key.getScores();
+        this.name = key.getName();
+        this.scores = key.getScores();
     }
 
     public long getId() {
@@ -54,12 +54,11 @@ public class Customer {
         if (o == null || getClass() != o.getClass()) return false;
 
         Customer customer = (Customer) o;
-        return Long.compare(this.id, customer.id)==0;
+        return Long.compare(this.id, customer.id) == 0;
     }
 
     @Override
     public int hashCode() {
         return Long.hashCode(id);
     }
-
 }
