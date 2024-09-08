@@ -33,6 +33,7 @@ allprojects {
     val testcontainersBom: String by project
     val protobufBom: String by project
     val guava: String by project
+    val jmh: String by project
 
     apply(plugin = "io.spring.dependency-management")
     dependencyManagement {
@@ -46,6 +47,9 @@ allprojects {
 
 
             dependency("com.google.guava:guava:$guava")
+            dependency("org.openjdk.jmh:jmh-core:$jmh")
+            dependency("org.openjdk.jmh:jmh-generator-annprocess:$jmh")
+
 //            dependency("ch.qos.logback:logback-classic")
         }
     }
@@ -63,10 +67,10 @@ allprojects {
 //            force("org.sonarsource.analyzer-commons:sonar-xml-parsing:2.8.0.2699")
 //            force("org.sonarsource.sslr:sslr-core:1.24.0.633")
 //            force("org.sonarsource.analyzer-commons:sonar-analyzer-recognizers:2.8.0.2699")
-//            force("com.google.code.findbugs:jsr305:3.0.2")
-//            force("commons-io:commons-io:2.15.1")
-//            force("com.google.errorprone:error_prone_annotations:2.26.1")
-//            force("com.google.j2objc:j2objc-annotations:3.0.0")
+            force("com.google.code.findbugs:jsr305:3.0.2")
+            force("commons-io:commons-io:2.15.1")
+            force("com.google.errorprone:error_prone_annotations:2.26.1")
+            force("com.google.j2objc:j2objc-annotations:3.0.0")
         }
     }
 }
@@ -118,3 +122,6 @@ tasks {
 
 }
 
+//dependencies {
+//    implementation(kotlin("script-runtime"))
+//}
