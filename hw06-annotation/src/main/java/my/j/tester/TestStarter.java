@@ -14,11 +14,9 @@ public class TestStarter {
         Class<?> test = Class.forName(nameClassTest);
         Method[] methods = test.getDeclaredMethods();
         ArrayList<Method> list_before_methods = new ArrayList<Method>();
-        ;
         ArrayList<Method> list_test_methods = new ArrayList<Method>();
-        ;
         ArrayList<Method> list_after_methods = new ArrayList<Method>();
-        ;
+
         for (Method m : methods) {
             if (m.isAnnotationPresent(Test.class)) {
                 list_test_methods.add(m);
