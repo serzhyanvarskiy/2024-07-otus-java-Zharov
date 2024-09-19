@@ -13,22 +13,22 @@ public class TestStarter {
             throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Class<?> test = Class.forName(nameClassTest);
         Method[] methods = test.getDeclaredMethods();
-        ArrayList<Method> list_before_methods = new ArrayList<Method>();
-        ArrayList<Method> list_test_methods = new ArrayList<Method>();
-        ArrayList<Method> list_after_methods = new ArrayList<Method>();
+        ArrayList<Method> listBeforeMethods = new ArrayList<Method>();
+        ArrayList<Method> listTestMethods = new ArrayList<Method>();
+        ArrayList<Method> listAfterMethods = new ArrayList<Method>();
 
         for (Method m : methods) {
             if (m.isAnnotationPresent(Test.class)) {
-                list_test_methods.add(m);
+                listTestMethods.add(m);
             } else if (m.isAnnotationPresent(Before.class)) {
-                list_before_methods.add(m);
+                listBeforeMethods.add(m);
             } else if (m.isAnnotationPresent(After.class)) {
-                list_after_methods.add(m);
+                listAfterMethods.add(m);
             }
         }
         int num_test = 0;
         int counter = 0;
-        for (var test_method : list_test_methods) {
+        for (var test_method : listTestMethods) {
             Constructor<?> constructor = test.getConstructor();
             Object object_for_test = null;
             try {
@@ -37,13 +37,13 @@ public class TestStarter {
                 throw new RuntimeException(e);
             }
             num_test++;
-            for (Method m : list_before_methods) {
+            for (Method m : listBeforeMethods) {
                 m.invoke(object_for_test, new Object[] {num_test});
             }
 
             boolean res = (boolean) test_method.invoke(object_for_test);
             if (res) counter++;
-            for (Method m : list_after_methods) {
+            for (Method m : listAfterMethods) {
                 m.invoke(object_for_test);
             }
         }
