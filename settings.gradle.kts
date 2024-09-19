@@ -1,8 +1,8 @@
 rootProject.name = "J_HW01"
 include("hw01-gradle")
 include("hw04-collections")
-
-
+include("hw06-annotation")
+include("hw08-gc")
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings
