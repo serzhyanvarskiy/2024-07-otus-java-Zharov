@@ -34,6 +34,7 @@ allprojects {
     val protobufBom: String by project
     val guava: String by project
     val jmh: String by project
+    val logv: String by project;
 
     apply(plugin = "io.spring.dependency-management")
     dependencyManagement {
@@ -50,7 +51,7 @@ allprojects {
             dependency("org.openjdk.jmh:jmh-core:$jmh")
             dependency("org.openjdk.jmh:jmh-generator-annprocess:$jmh")
 
-//            dependency("ch.qos.logback:logback-classic")
+            dependency("ch.qos.logback:logback-classic:$logv")
         }
     }
 
